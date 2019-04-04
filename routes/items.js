@@ -27,4 +27,23 @@ router.post("/", function(req, res) {
     });
 });
 
+router.post("/contains", function(req, res) {
+  var itemName = req.body.item;
+  var component = req.body.component;
+  var containAmount = req.body.containAmount;
+
+  session
+    .run(
+      "MATCH (a:Item {name:{itemName}}),(b:Item {name: {component}}) CREATE (a)-[r:CONTAINS {amount:{containAmount}}]->(b) RETURN r",
+      {
+        itemName: itemName,
+        component: component,
+        containAmount: containAmount
+      }
+    )
+    .then(function(result) {
+      session.close();
+    });
+});
+
 module.exports = router;
