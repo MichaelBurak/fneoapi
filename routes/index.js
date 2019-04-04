@@ -9,11 +9,6 @@ const driver = neo4j.driver(
 
 const session = driver.session();
 
-// /* GET home page. */
-// router.get("/", function(req, res, next) {
-//   res.render("index", { title: "Express" });
-// });
-
 //Home Route
 router.get("/", function(req, res) {
   session.run("MATCH (n:Character) RETURN n").then(function(result) {
