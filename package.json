@@ -13,6 +13,7 @@
     "cookie-parser": "^1.4.4",
     "express": "^4.16.4",
     "morgan": "^1.9.1",
+    "neo4j-driver": "^1.7.3",
     "pug": "^2.0.3"
   }
 }
