@@ -35,11 +35,8 @@ router.post("/contains", function(req, res) {
   session
     .run(
       "MATCH (a:Item {name:{itemName}}),(b:Item {name: {component}}) CREATE (a)-[r:CONTAINS {amount:{containAmount}}]->(b) RETURN r",
-      {
-        itemName: itemName,
-        component: component,
-        containAmount: containAmount
-      }
+
+      { itemName, component, containAmount }
     )
     .then(function(result) {
       session.close();
