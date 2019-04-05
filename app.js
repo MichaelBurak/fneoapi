@@ -23,6 +23,7 @@ const session = driver.session();
 
 const indexRouter = require("./routes/index");
 const characterRouter = require("./routes/pcs/characters");
+const playerRouter = require("./routes/pcs/players");
 const itemRouter = require("./routes/resources/items");
 const valueRouter = require("./routes/values");
 const gameRouter = require("./routes/games/games");
@@ -30,6 +31,7 @@ const gameRouter = require("./routes/games/games");
 
 app.use("/", indexRouter);
 app.use("/characters", characterRouter);
+app.use("/players", playerRouter);
 app.use("/items", itemRouter);
 app.use("/values", valueRouter);
 app.use("/games", gameRouter);
