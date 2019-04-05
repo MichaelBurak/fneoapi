@@ -26,6 +26,24 @@ router.post("/", function(req, res) {
     });
 });
 
+//Update character route
+router.put("/", function(req, res) {
+  var name = req.body.character;
+  var newName = req.body.newName;
+  session
+    .run("MATCH (n:Character {name: {name}}) SET n.name = {newName} RETURN n", {
+      name,
+      newName
+    })
+    .then(function(result) {
+      res.send(result);
+      session.close();
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+});
+
 // Delete character route (D)
 
 router.delete("/delete/:character", function(req, res) {
