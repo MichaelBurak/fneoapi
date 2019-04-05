@@ -22,17 +22,19 @@ const driver = neo4j.driver(
 const session = driver.session();
 
 const indexRouter = require("./routes/index");
-const characterRouter = require("./routes/characters");
-const itemRouter = require("./routes/items");
+const characterRouter = require("./routes/pcs/characters");
+const itemRouter = require("./routes/resources/items");
 const valueRouter = require("./routes/values");
-// const gameRouter = require("./routes/games");
+const gameRouter = require("./routes/games/games");
+// const craftRouter = require("./routes/crafting");
 // const calculatorRouter = require("./routes/calculator");
 
 app.use("/", indexRouter);
 app.use("/characters", characterRouter);
 app.use("/items", itemRouter);
 app.use("/values", valueRouter);
-// app.use("/games", gameRouter);
+app.use("/games", gameRouter);
+// app.use("/crafting", craftRouter);
 // app.use("/calculator", calculatorRouter);
 
 app.listen(5000);
